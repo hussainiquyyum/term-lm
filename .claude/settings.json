@@ -1,0 +1,13 @@
+{
+  "hooks": {
+    "PreToolUse": [{
+      "matcher": "Edit|Write",
+      "hooks": [{"type": "command", "command": "jq -r '.tool_input.file_path // \"\"' | grep -qE '(tests/fixtures/endpoint-method-shapes-v1\\.json|Cargo\\.lock)$|/vendor/libghostty-vt/' && echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"ask\",\"permissionDecisionReason\":\"Frozen contract / vendored / lock file: see AGENTS.md\"}}' || true"}]
+    }],
+    "PostToolUse": [{
+      "matcher": "Edit|Write",
+      "hooks": [{"type": "command", "command": "jq -r '.tool_input.file_path // \"\"' | grep -q '\\.rs$' && cargo fmt --all >/dev/null 2>&1 || true"}]
+    }]
+  },
+  "permissions": {"allow": ["Bash(just test:*)", "Bash(just check:*)", "Bash(just lint:*)"]}
+}

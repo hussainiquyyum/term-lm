@@ -1,0 +1,10 @@
+TERM-LM
+Copyright 2026 Husaini Holding
+
+This product is a derivative work of Herdr (https://github.com/herdrdev/herdr),
+licensed under the Apache License, Version 2.0. The original copyright and
+license notices are retained in LICENSE. Files have been modified from the
+original source.
+
+Vendored components (libghostty-vt, portable-pty) retain their own licenses
+under vendor/.
